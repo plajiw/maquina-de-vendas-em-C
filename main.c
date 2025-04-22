@@ -1,6 +1,15 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+#ifdef WINDOWS
+#define CLEAR "cls"
+
+#else
+#define CLEAR "clear"
+
+#endif
+
+// Estrutura de Produto
 typedef struct
 {
     char name[20];
@@ -59,6 +68,13 @@ void exibirProdutos(Produto *maquina[], int tamanho, float saldo)
 
     printf("\nSaldo atual: R$%.2f\n\n", saldo);
 
+    printf("\n0. Sair");
+}
+
+void venderProduto(Produto *produto, float *saldo)
+{
+    produto->estoque--; // Reduz estoque
+    *saldo -= produto->preco;
 }
 
 int main()
@@ -87,11 +103,26 @@ int main()
 
     while (opcao != 0)
     {
+        system(CLEAR);
         inserirSaldo(&saldo);
         exibirProdutos(maquina, PRODUTOS_QTD, saldo);
 
+        printf("Escolha uma opção: ");
+
         scanf("%d", &opcao);
+
+        if (opcao == 0)
+        {
+            break;
+        }
+
+        else if (opcao >= 1 && opcao <= PRODUTOS_QTD)
+        {
+            venderProduto(maquina[opcao - 1], &saldo);
+        }
     }
+
+    printf("Programa encerrado");
 
     return 0;
 }
