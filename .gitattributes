@@ -1,2 +1,6 @@
-# Auto detect text files and perform LF normalization
-* text=auto
+# Define final de linha padrão como LF (compatível com Unix/Linux/Mac)
+* text=auto eol=lf
+
+# Informa ao GitHub que os arquivos .c e .h são da linguagem C
+*.c linguist-language=C
+*.h linguist-language=C
