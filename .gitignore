@@ -1,0 +1,27 @@
+# Arquivos binários (executáveis)
+*.exe
+*.out
+*.o
+*.obj
+
+# Arquivos de depuração e logs
+*.log
+*.dbg
+*.pdb
+
+# Diretórios de build (caso use algum script ou ferramenta)
+build/
+dist/
+
+# VS Code
+.vscode/
+
+# Arquivos temporários de sistema
+*.tmp
+*.bak
+*.swp
+.DS_Store
+Thumbs.db
+
+# Arquivos gerados por GCC com -g (debug info)
+*.dSYM/
